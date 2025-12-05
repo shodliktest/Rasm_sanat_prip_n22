@@ -1,0 +1,318 @@
+/* Basic Styles for the entire page */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e0f2f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Container for the quiz */
+.container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+    border: 1px solid #cceeff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 500px; /* Minimal balandlik berish */
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 35px;
+    font-size: 2.2em;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+}
+
+/* Styling for each question block */
+.question-block {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    flex-grow: 1;
+}
+
+.question-text {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: #34495e;
+    line-height: 1.5;
+}
+
+/* Styling for the options list */
+.options-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.options-list li {
+    margin-bottom: 12px;
+}
+
+.options-list label {
+    display: flex;
+    align-items: center;
+    background-color: #f8fcfd;
+    padding: 14px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    border: 1px solid #add8e6;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.options-list label:hover {
+    background-color: #e6f7ff;
+    border-color: #87ceeb;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the custom radio buttons */
+.options-list input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #3498db;
+    border-radius: 50%;
+    margin-right: 15px;
+    position: relative;
+    outline: none;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* Radio button ichki doirasi tanlanganda */
+.options-list input[type="radio"]:checked {
+    background-color: #3498db;
+    border-color: #3498db;
+}
+
+.options-list input[type="radio"]:checked::before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: #ffffff;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Feedback messages (Correct/Incorrect) */
+.feedback {
+    margin-top: 10px;
+    padding: 8px 12px;
+    font-weight: bold;
+    font-size: 0.9em;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.feedback.correct {
+    color: #27ae60;
+    background-color: #e9f8f2;
+    border-color: #27ae60;
+}
+
+.feedback.incorrect {
+    color: #e74c3c;
+    background-color: #fdeaea;
+    border-color: #e74c3c;
+}
+
+/* Navigation buttons (Only "Next" button remains) */
+.navigation-buttons {
+    margin-top: 25px;
+    margin-bottom: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.navigation-buttons button {
+    padding: 12px 30px;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Specific button colors */
+#nextBtn {
+    background-color: #2ecc71;
+}
+#nextBtn:hover {
+    background-color: #27ae60;
+    transform: translateY(-2px);
+}
+
+/* Disable state for button */
+.navigation-buttons button:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/* RESULTS INLINE STYLE */
+.results-inline {
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    text-align: center;
+    font-size: 1em;
+    color: #555;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5px;
+}
+
+.results-inline span {
+    font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 25px;
+    }
+    h1 {
+        font-size: 1.8em;
+    }
+    .question-text {
+        font-size: 1.1em;
+    }
+    .options-list label {
+        padding: 12px 15px;
+        font-size: 0.95em;
+    }
+    .navigation-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .navigation-buttons button {
+        width: 100%;
+        margin-left: 0;
+    }
+    .results-inline {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+        border-radius: 8px;
+    }
+    h1 {
+        font-size: 1.5em;
+        margin-bottom: 25px;
+    }
+    .question-text {
+        font-size: 0.95em;
+    }
+    .options-list label {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+    .navigation-buttons button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+}
+.contact-btn {
+    /* 'A' tegi uchun zaruriy uslublar */
+    display: inline-block;
+    text-align: center;
+    text-decoration: none; 
+    
+    /* Umumiy vizual uslublar (Keyingi kabi) */
+    padding: 5px 20px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 8px; 
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s, color 0.3s;
+    
+    /* Boshqacha Dizayn: Outline/Ghost style */
+    background-color: transparent; /* Shaffof fon */
+    color: #9ksks2d; /* Kulrang matn rangi */
+    border: 2px solid #6c757d; /* Kulrang chegara */
+}
+
+.contact-btn:hover {
+    background-color: #6c757d; /* Ustiga kelganda rang to'ldiriladi */
+    color: white; /* Matn oq rangga o'tadi */
+    transform: scale(1.02);
+}
+
+
+/* --- ZAMONAVIY TAYMER UCHUN CSS --- */
+.timer-fixed {
+    position: fixed; /* Sahifada qadalgan holatda turadi */
+    top: 20px; /* Yuqoridan masofa */
+    right: 20px; /* O'ng tomondan masofa */
+    z-index: 1000; /* Boshqa elementlardan ustun turishi uchun */
+    
+    /* Dizayn */
+    background: rgba(4, 170, 109, 0.45); /* Yashil rang, biroz shaffof */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px; /* Tablet shaklida yumaloq burchaklar */
+    font-size: 1.1em;
+    font-weight: 700;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Yumshoq soyalar */
+    font-family: 'Consolas', monospace; 
+    transition: background 0.3s;
+}
+
+.timer-fixed:hover {
+    background: rgba(4, 170, 109, 1); /* Ustiga kelganda to'liq rang */
+}
+
+footer {
+    /* Noto'g'ri joylashuvni o'chirish */
+    position: static; /* Yoki bu qatorni butunlay o'chiring */
+    float: none;     /* Yoki bu qatorni butunlay o'chiring */
+
+    /* Kontentni to'liq egallash */
+    width: 100%; 
+    box-sizing: border-box; /* Padding bilan kenglikni o'zgartirmaslik */
+    
+    /* Vizual ajratish */
+    margin-top: 30px; 
+    padding: 15px 0;
+    text-align: center;
+    border-top: 1px solid #e0e0e0;
+    background-color: #fff; /* Konteyner foniga moslash */
+    color: #6c757d; 
+    font-size: 0.9em;
+}
